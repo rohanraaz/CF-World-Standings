@@ -23,24 +23,24 @@ def get_lists_urls(table):
     urls = {}
     for row in table:
         if row.find('a'):
-            country = row.find('a').text
-            country_list_url = cf_url + row.find('a')['href']
-            urls[country] = country_list_url
+            organization = row.find('a').text
+            organization_list_url = cf_url + row.find('a')['href']
+            urls[organization] = organization_list_url
     return urls
 
 
-def get_active_countries_dict(countries_dict):
-    active_countries_dict = {}
-    for country, users in countries_dict.items():
-        active_countries_dict[country] = 0
+def get_active_countries_dict(organizations_dict):
+    active_organizations_dict = {}
+    for organization, users in organizations_dict.items():
+        active_organizations_dict[organization] = 0
         for user in users:
             if user[0]:
-                active_countries_dict[country] += 1
-    return active_countries_dict
+                active_organizations_dict[organization] += 1
+    return active_organizations_dict
 
 
-def get_handles(country_handles):
+def get_handles(organization_handles):
     handles = []
-    for user in country_handles[:1000]:
+    for user in organization_handles[:1000]:
         handles.append(user[2])
     return handles
