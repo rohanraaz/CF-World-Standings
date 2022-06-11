@@ -19,17 +19,17 @@ def get_all_active_users():
 
 
 def separate_by_country(users):
-    countries = {unknown: []}
+    organizations = {unknown: []}
     for user in users:
         user_datetime = datetime.fromtimestamp(user["lastOnlineTimeSeconds"])
         active = (datetime.now()-user_datetime).days < 30
-        if "country" in user:
-            country = user["country"]
-            if country not in countries:
-                countries[country] = []
-            countries[country].append([active, user["rating"], user["handle"]])
+        if "organization" in user:
+            organization = user["organization"]
+            if organization not in organizations:
+                organizations[organization] = []
+            organizations[organization].append([active, user["rating"], user["handle"]])
         else:
-            countries[unknown].append([active, user["rating"], user["handle"]])
-    for country in countries:
-        countries[country] = sorted(countries[country])[::-1]
-    return countries
+            organizations[unknown].append([active, user["rating"], user["handle"]])
+    for organization in organizations:
+        organizations[organization] = sorted(organizations[organization])[::-1]
+    return organizations
