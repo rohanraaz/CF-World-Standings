@@ -29,7 +29,7 @@ def get_lists_urls(table):
     return urls
 
 
-def get_active_countries_dict(organizations_dict):
+def get_active_organizations_dict(organizations_dict):
     active_organizations_dict = {}
     for organization, users in organizations_dict.items():
         active_organizations_dict[organization] = 0
