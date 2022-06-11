@@ -18,7 +18,7 @@ def get_all_active_users():
     return users_json
 
 
-def separate_by_country(users):
+def separate_by_organization(users):
     organizations = {unknown: []}
     for user in users:
         user_datetime = datetime.fromtimestamp(user["lastOnlineTimeSeconds"])
